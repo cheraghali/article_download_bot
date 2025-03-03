@@ -2,7 +2,8 @@ import requests
 import json
 import time
 
-TOKEN = "826366822:PxdbeH8E1bPqyJS6pKXQjnLyat3HoxLFoGYhSTgY"
+TOKEN = "MY_TOKEN"
+ID = "MY_ID"
 BALE_API_URL = f"https://tapi.bale.ai/bot{TOKEN}/"
 
 # تابع برای دریافت پیام‌ها
@@ -58,7 +59,7 @@ def main():
                 elif text == "🔍 جستجوی مقاله":
                     send_message(chat_id, "🔎 لطفاً DOI یا لینک مقاله را ارسال کنید.")
                 elif text == "🔗 اشتراک‌گذاری ربات":
-                    bot_username = "@article_downloader_bot"  # نام کاربری یا لینک ربات خود را جایگزین کنید
+                    bot_username = "ID"  # نام کاربری یا لینک ربات خود را جایگزین کنید
                     send_message(chat_id, f"🔗 برای دعوت دیگران به استفاده از این ربات، لینک زیر را به اشتراک بگذارید:\n{bot_username}")
                 elif text:
                     link = get_scihub_link(text)
