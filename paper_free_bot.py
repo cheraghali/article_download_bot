@@ -1,9 +1,14 @@
 import requests
 import json
 import time
+import os  # اضافه کردن کتابخانه os
 
-TOKEN = "MY_TOKEN"
-ID = "MY_ID"
+TOKEN = os.getenv("TOKEN")  # توکن را از متغیر محیطی می‌خواند
+ID = os.getenv("ID")  # ID را از متغیر محیطی می‌خواند
+
+if not TOKEN or not ID:
+    raise ValueError("لطفاً TOKEN و ID را به عنوان متغیر محیطی تنظیم کنید.")
+
 BALE_API_URL = f"https://tapi.bale.ai/bot{TOKEN}/"
 
 # تابع برای دریافت پیام‌ها
@@ -59,7 +64,7 @@ def main():
                 elif text == "🔍 جستجوی مقاله":
                     send_message(chat_id, "🔎 لطفاً DOI یا لینک مقاله را ارسال کنید.")
                 elif text == "🔗 اشتراک‌گذاری ربات":
-                    bot_username = "ID"  # نام کاربری یا لینک ربات خود را جایگزین کنید
+                    bot_username = ID  # استفاده از ID از متغیر محیطی
                     send_message(chat_id, f"🔗 برای دعوت دیگران به استفاده از این ربات، لینک زیر را به اشتراک بگذارید:\n{bot_username}")
                 elif text:
                     link = get_scihub_link(text)
